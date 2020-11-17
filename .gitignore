@@ -1,21 +1,6 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-
 reserve.md
 HELP.md
+.gradle
 build/
 
 ### STS ###
@@ -30,11 +15,15 @@ build/
 ### IntelliJ IDEA ###
 .idea
 *.iws
+*.iml
 *.ipr
 out/
 
 ### Android Studio ###
+local.properties
 captures/
+.externalNativeBuild
+.cxx
 
 ### NetBeans ###
 /nbproject/private/
