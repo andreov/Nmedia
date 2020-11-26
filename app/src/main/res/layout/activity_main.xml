@@ -15,8 +15,9 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toOf="@id/barrier"
-        app:srcCompat="@drawable/netology_48" />
+        app:layout_constraintBottom_toBottomOf="@id/barrierTop"
+        app:srcCompat="@drawable/netology_48"
+        android:contentDescription="@string/avatar_netology" />
 
     <TextView
         android:id="@+id/author"
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/barrier"
+        app:layout_constraintBottom_toBottomOf="@+id/barrierTop"
         app:layout_constraintStart_toStartOf="@+id/author"
         app:layout_constraintTop_toBottomOf="@id/author"
 
@@ -53,10 +54,11 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+        app:srcCompat="@drawable/ic_baseline_more_vert_24"
+        android:contentDescription="@string/menu_post" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
+        android:id="@+id/barrierTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
@@ -68,25 +70,96 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+
         android:autoLink="web"
         android:text="@string/contentText"
+        app:layout_constraintBottom_toTopOf="@id/barrierBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
-        app:layout_constraintBottom_toTopOf="@id/barrier2"
-        />
+        app:layout_constraintTop_toBottomOf="@id/barrierTop" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
+        android:id="@+id/barrierBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,published,menu,content"
+        app:constraint_referenced_ids="barrierTop,avatar,published,menu,content"
         app:layout_constraintTop_toBottomOf="@id/content"
         tools:layout_editor_absoluteY="236dp" />
 
+    <ImageButton
+        android:id="@+id/imageLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/whiteTr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <TextView
+        android:id="@+id/textLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@id/imageLike"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <ImageButton
+        android:id="@+id/imageShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/whiteTr"
+        app:layout_constraintStart_toEndOf="@id/textLike"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        app:srcCompat="@drawable/ic_baseline_share_24"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <TextView
+        android:id="@+id/textShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@id/imageShare"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <TextView
+        android:id="@+id/textViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <ImageButton
+        android:id="@+id/imageViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/whiteTr"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
+        app:layout_constraintEnd_toStartOf="@id/textViews"
+        app:srcCompat="@drawable/ic_baseline_visibility_24"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="255dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
