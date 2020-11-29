@@ -2,7 +2,9 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*  // установка в Gradle
+import ru.netology.nmedia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,41 +16,31 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //val binding = ActivityMainBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
         setContentView(R.layout.activity_main)
 
-        initViews()
-        clickLike()
-        clickShare()
+        textLike.text = shortFormatCount.countFormat(countLike)
+        textShare.text = shortFormatCount.countFormat(countShare)
 
-    }
-
-    private fun initViews(){
-        textLike?.text = shortFormatCount.countFormat(countLike)
-        textShare?.text = shortFormatCount.countFormat(countShare)
-    }
-
-    private fun clickLike() {
-        imageLike?.setOnClickListener {
+        imageLike.setOnClickListener {
             if (!likedByMe) {
-                imageLike?.setImageResource(R.drawable.ic_baseline_favorite_24)
+                imageLike.setImageResource(R.drawable.ic_baseline_favorite_24)
                 countLike++
-                textLike?.text = shortFormatCount.countFormat(countLike)
+                textLike.text = shortFormatCount.countFormat(countLike)
                 likedByMe = true
             } else {
-                imageLike?.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                imageLike.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 countLike--
-                textLike?.text = shortFormatCount.countFormat(countLike)
+                textLike.text = shortFormatCount.countFormat(countLike)
                 likedByMe = false
             }
         }
-    }
 
-    private fun clickShare() {
-        imageShare?.setOnClickListener {
+        imageShare.setOnClickListener {
             countShare++
-            textShare?.text = shortFormatCount.countFormat(countShare)
+            textShare.text = shortFormatCount.countFormat(countShare)
         }
+
     }
-
-
 }
