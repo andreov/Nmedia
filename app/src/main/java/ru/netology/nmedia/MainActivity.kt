@@ -3,7 +3,7 @@ package ru.netology.nmedia
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import kotlinx.android.synthetic.main.activity_main.*  // установка в Gradle
+//import kotlinx.android.synthetic.main.activity_main.*  // установка в Gradle
 import ru.netology.nmedia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,30 +16,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val binding = ActivityMainBinding.inflate(layoutInflater)
-        //setContentView(binding.root)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //setContentView(R.layout.activity_main)
 
-        textLike.text = shortFormatCount.countFormat(countLike)
-        textShare.text = shortFormatCount.countFormat(countShare)
+        binding.textLike.text = shortFormatCount.countFormat(countLike)
+        binding.textShare.text = shortFormatCount.countFormat(countShare)
 
-        imageLike.setOnClickListener {
+        binding.imageLike.setOnClickListener {
+            Log.d("stuff", "like")
             if (!likedByMe) {
-                imageLike.setImageResource(R.drawable.ic_baseline_favorite_24)
+                binding.imageLike.setImageResource(R.drawable.ic_baseline_favorite_24)
                 countLike++
-                textLike.text = shortFormatCount.countFormat(countLike)
+                binding.textLike.text = shortFormatCount.countFormat(countLike)
                 likedByMe = true
             } else {
-                imageLike.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                binding.imageLike.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 countLike--
-                textLike.text = shortFormatCount.countFormat(countLike)
+                binding.textLike.text = shortFormatCount.countFormat(countLike)
                 likedByMe = false
             }
         }
 
-        imageShare.setOnClickListener {
+        binding.imageShare.setOnClickListener {
+            Log.d("stuff", "share")
             countShare++
-            textShare.text = shortFormatCount.countFormat(countShare)
+            binding.textShare.text = shortFormatCount.countFormat(countShare)
         }
 
     }
