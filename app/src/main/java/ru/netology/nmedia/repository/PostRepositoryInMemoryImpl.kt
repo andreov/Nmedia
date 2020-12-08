@@ -98,21 +98,16 @@ class PostRepositoryInMemoryImpl : PostRepository {
         posts = posts.map {
             if (it.id != id) it else {
                 val likedByMe:Boolean=!it.likedByMe
-                //val countLike:Long = if(likedByMe) it.countLike+1 else it.countLike-1
                 it.copy(likedByMe = likedByMe, countLike = if(likedByMe) it.countLike+1 else it.countLike-1)
             }
         }
-
-//        val likedByMe:Boolean=!post.likedByMe
-//        val countLike:Long = if(likedByMe) post.countLike+1 else post.countLike-1
-//        post = post.copy(likedByMe = likedByMe, countLike = countLike)
         data.value = posts
     }
+
     override fun share(id:Long){
         posts = posts.map {
             if (it.id != id) it else it.copy(countShare = it.countShare+1)
         }
-        //post = post.copy(countShare = post.countShare+1)
         data.value = posts
     }
 

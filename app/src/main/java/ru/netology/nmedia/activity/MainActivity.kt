@@ -19,9 +19,6 @@ import ru.netology.nmedia.adapter.PostAdapter
 class MainActivity : AppCompatActivity() {
 
 
-    //private val shortFormatCount = ShortFormatCount()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -36,27 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.postViewList.adapter = adapter
         viewModel.data.observe(this) { posts ->
-            adapter.list = posts
+            adapter.submitList(posts)
         }
-//        viewModel.data.observe(this) { post ->
-//            with(binding) {
-//                author.text = post.author
-//                published.text = post.published
-//                content.text = post.content
-//                textLike.text = shortFormatCount.countFormat(post.countLike)
-//                textShare.text = shortFormatCount.countFormat(post.countShare)
-//                imageLike.setImageResource(
-//                    if(post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-//                )
-//            }
-//        }
-//        binding.imageLike.setOnClickListener{
-//            viewModel.like()
-//        }
-//
-//        binding.imageShare.setOnClickListener{
-//            viewModel.share()
-//        }
 
     }
 }
