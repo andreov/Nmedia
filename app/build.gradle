@@ -44,6 +44,11 @@ dependencies {
     def lifecycle_version = "2.2.0"
     def arch_version = "2.1.0"
     def activity_version = "1.1.0"
+    def recyclerview_version = "1.1.0"
+
+    //Recyclerview
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
     implementation "androidx.activity:activity-ktx:$activity_version"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
