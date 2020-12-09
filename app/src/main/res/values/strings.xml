@@ -6,5 +6,6 @@
     <string name="contentText">Hello, this is the new Netology! Once upon a time, Netology began with online marketing intensives. Then there were courses in design, development, analytics and management. We grow ourselves and help students grow: from beginners to confident professionals. But the most important thing remains with us: we believe that everyone already has a force that makes you want more, aim higher, run faster. Our mission is to help get on the path of growth and start a chain of change → http://netolo.gy/fyb</string>
     <string name="avatar_netology">avatar netology</string>
     <string name="menu_post">menu post</string>
+    <string name="removePost">Remove Post</string>
 
 </resources>
