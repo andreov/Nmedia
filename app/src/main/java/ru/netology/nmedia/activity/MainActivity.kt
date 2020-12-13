@@ -10,13 +10,15 @@ import android.widget.Toast
 import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.netology.nmedia.R
-import ru.netology.nmedia.adapter.OnLikeListener
-import ru.netology.nmedia.adapter.OnShareListener
+import ru.netology.nmedia.adapter.OnInteractionListener
+//import ru.netology.nmedia.adapter.OnLikeListener
+//import ru.netology.nmedia.adapter.OnShareListener
 //import kotlinx.android.synthetic.main.activity_main.*  // установка в Gradle
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.ShortFormatCount
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.adapter.PostAdapter
+import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.AndroidUtils
 
 class MainActivity : AppCompatActivity() {
@@ -29,11 +31,23 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel:PostViewModel by viewModels()
 
-        val adapter = PostAdapter (
-            {viewModel.like(it.id)},
-            {viewModel.share(it.id)},
-            {viewModel.remove(it.id)}
-        )
+        val adapter = PostAdapter (object : OnInteractionListener {
+            override fun onEdit(post: Post) {
+                viewModel.editPost(post)
+            }
+
+            override fun onLike(post: Post) {
+                viewModel.like(post.id)
+            }
+
+            override fun onRemove(post: Post) {
+                viewModel.remove(post.id)
+            }
+
+            override fun onShare(post: Post) {
+                viewModel.share(post.id)
+            }
+        })
 
         binding.postViewList.adapter = adapter
         viewModel.data.observe(this) { posts ->

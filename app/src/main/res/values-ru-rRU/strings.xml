@@ -11,5 +11,6 @@
     <string name="text_post">Вставте текс для поста</string>
     <string name="description_save">Сохранить</string>
     <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="edit_post">Редактировать пост</string>
 
 </resources>
