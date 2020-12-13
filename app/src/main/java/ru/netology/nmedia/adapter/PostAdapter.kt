@@ -17,7 +17,7 @@ typealias OnRemoveListener = (post: Post) -> Unit
 
 class PostAdapter(private val onLikeListener: OnLikeListener,
                   private val onShareListener: OnShareListener,
-                  private  val onRemoveListener: OnRemoveListener
+                  private val onRemoveListener: OnRemoveListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
 
 

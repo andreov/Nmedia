@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels //implementation "androidx.activity:activity-ktx:$activity_version"
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.observe
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnLikeListener
 import ru.netology.nmedia.adapter.OnShareListener
@@ -15,6 +17,7 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.ShortFormatCount
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.adapter.PostAdapter
+import ru.netology.nmedia.util.AndroidUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,34 @@ class MainActivity : AppCompatActivity() {
         binding.postViewList.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
+        }
+
+        viewModel.edited.observe(this) { post ->
+            if (post.id == 0L) {
+                return@observe
+            }
+            with(binding.textPost) {
+                requestFocus()
+                setText(post.content)
+            }
+        }
+
+        binding.savePost.setOnClickListener {
+            with(binding.textPost) {
+                if (text.isNullOrBlank()) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        context.getString(R.string.error_empty_content),
+                        Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                viewModel.changeContent(text.toString())
+                viewModel.savePost()
+
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
+            }
         }
 
     }

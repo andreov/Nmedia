@@ -7,5 +7,8 @@
     <string name="avatar_netology">avatar netology</string>
     <string name="menu_post">menu post</string>
     <string name="removePost">Remove Post</string>
+    <string name="text_post">Input text Post</string>
+    <string name="description_save">Save</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
 
 </resources>
