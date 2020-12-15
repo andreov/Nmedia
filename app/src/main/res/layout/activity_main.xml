@@ -32,6 +32,7 @@
         android:inputType="textMultiLine"
         android:background="@android:color/transparent"
         android:padding="16dp"
+        android:textSize="16dp"
         android:importantForAutofill="no"
         app:layout_constraintTop_toTopOf="@id/barrierTop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,10 +44,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/post_save_outline_24"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_save_36"
+        app:layout_constraintEnd_toStartOf="@id/cancelEdit"
         app:layout_constraintStart_toEndOf="@id/textPost"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/description_save" />
+
+    <ImageButton
+        android:id="@+id/cancelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_baseline_cancel_36"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:contentDescription="@string/description_save" />
 

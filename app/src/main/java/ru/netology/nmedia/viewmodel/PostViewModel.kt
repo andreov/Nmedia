@@ -12,8 +12,8 @@ private val empty = Post(   //data post для заполнения нового
     content = "",
     published = "",
     likedByMe = false,
-    countShare = 1099,
-    countLike = 999
+    countShare = 0,
+    countLike = 0
 )
 
 class PostViewModel : ViewModel() {
@@ -25,7 +25,7 @@ class PostViewModel : ViewModel() {
     fun share(id: Long) = repository.share(id)
     fun remove(id: Long) = repository.remove(id)
 
-    fun savePost() {                 //сохранение нового поста
+    fun savePost() {                 //сохранение поста
         edited.value?.let {
             repository.savePost(it)
         }

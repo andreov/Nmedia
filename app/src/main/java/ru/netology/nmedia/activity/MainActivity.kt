@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             if (post.id == 0L) {
                 return@observe
             }
-            with(binding.textPost) {
+            with(binding.textPost) {   // копирование текста поста в editText
                 requestFocus()
                 setText(post.content)
             }
@@ -76,6 +76,14 @@ class MainActivity : AppCompatActivity() {
                 viewModel.changeContent(text.toString())
                 viewModel.savePost()
 
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
+            }
+        }
+
+        binding.cancelEdit.setOnClickListener {
+            with(binding.textPost){
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
