@@ -88,16 +88,17 @@
         app:layout_constraintTop_toBottomOf="@id/content"
         tools:layout_editor_absoluteY="236dp" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/imageLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/whiteTr"
+        android:checkable="true"
+        app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        app:srcCompat="@drawable/ic_baseline_favorite_border_24"
-        tools:layout_editor_absoluteY="270dp" />
+        style="@style/Widget.AppTheme.LikeCheckBox"
+         />
 
     <TextView
         android:id="@+id/textLike"

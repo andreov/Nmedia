@@ -47,9 +47,10 @@ class PostViewHolder(
             content.text = post.content
             textLike.text = shortFormatCount.countFormat(post.countLike)
             textShare.text = shortFormatCount.countFormat(post.countShare)
-            imageLike.setImageResource(
-                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-            )
+//            imageLike.setImageResource(
+//                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
+//            )
+            imageLike.isChecked = post.likedByMe   // materialDisign
 
             imageLike.setOnClickListener{
                 onInteractionListener.onLike(post)

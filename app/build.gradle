@@ -45,6 +45,7 @@ dependencies {
     def arch_version = "2.1.0"
     def activity_version = "1.1.0"
     def recyclerview_version = "1.1.0"
+    def mdc_version = "1.2.1"
 
     //Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
@@ -70,6 +71,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
+
+    implementation "com.google.android.material:material:$mdc_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
