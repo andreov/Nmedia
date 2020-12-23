@@ -46,16 +46,18 @@
 
         android:text="@string/publishedText" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
+        app:iconPadding="0dp"
+        app:iconGravity="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_more_vert_24"
-        android:contentDescription="@string/menu_post" />
+        app:icon="@drawable/ic_baseline_more_vert_24"
+        android:contentDescription="@string/menu_post"
+        style="@style/Widget.AppTheme.Text"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTop"
@@ -70,7 +72,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-
         android:autoLink="web"
         android:text="@string/contentText"
         app:layout_constraintBottom_toTopOf="@id/barrierBottom"
@@ -90,6 +91,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageLike"
+        app:iconTint="@color/like_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -97,70 +99,63 @@
         app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.LikeCheckBox"
-         />
+        style="@style/Widget.AppTheme.Text"
+        />
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/textLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:text="10"
         app:layout_constraintStart_toEndOf="@id/imageLike"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="263dp" />
+        style="@style/Widget.AppTheme.Text"/>
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/imageShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@color/whiteTr"
+        android:layout_marginStart="48dp"
+        android:checkable="true"
         app:layout_constraintStart_toEndOf="@id/textLike"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        app:srcCompat="@drawable/ic_baseline_share_24"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="253dp" />
+        app:icon="@drawable/ic_baseline_share_24"
+        style="@style/Widget.AppTheme.Text" />
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/textShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:text="5"
         app:layout_constraintStart_toEndOf="@id/imageShare"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="263dp" />
+        style="@style/Widget.AppTheme.Text"
+         />
 
-    <TextView
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/textViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:text="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="252dp" />
+        style="@style/Widget.AppTheme.Text"/>
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/imageViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/whiteTr"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
         app:layout_constraintEnd_toStartOf="@id/textViews"
-        app:srcCompat="@drawable/ic_baseline_visibility_24"
-        tools:layout_editor_absoluteX="259dp"
-        tools:layout_editor_absoluteY="255dp" />
+        app:icon="@drawable/ic_baseline_visibility_24"
+        style="@style/Widget.AppTheme.Text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
