@@ -45,8 +45,8 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            textLike.text = shortFormatCount.countFormat(post.countLike)
-            textShare.text = shortFormatCount.countFormat(post.countShare)
+            imageLike.text = shortFormatCount.countFormat(post.countLike)
+            imageShare.text = shortFormatCount.countFormat(post.countShare)
 //            imageLike.setImageResource(
 //                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
 //            )

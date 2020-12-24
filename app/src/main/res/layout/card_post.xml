@@ -95,23 +95,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="10"
         android:checkable="true"
         app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.Text"
-        />
+        style="@style/Widget.AppTheme.Text" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="16dp"
-        android:text="10"
-        app:layout_constraintStart_toEndOf="@id/imageLike"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.Text"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageShare"
@@ -120,40 +110,21 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="48dp"
         android:checkable="true"
-        app:layout_constraintStart_toEndOf="@id/textLike"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@id/imageLike"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
         app:icon="@drawable/ic_baseline_share_24"
         style="@style/Widget.AppTheme.Text" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="5"
-        app:layout_constraintStart_toEndOf="@id/imageShare"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.Text"
-         />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/textViews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.Text"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="5"
         app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        app:layout_constraintEnd_toStartOf="@id/textViews"
+        app:layout_constraintEnd_toEndOf="parent"
         app:icon="@drawable/ic_baseline_visibility_24"
         style="@style/Widget.AppTheme.Text" />
 
