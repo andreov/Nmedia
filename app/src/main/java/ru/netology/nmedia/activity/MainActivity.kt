@@ -1,5 +1,7 @@
 package ru.netology.nmedia.activity
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 
                                      //def activity_version = "1.1.0"
@@ -23,13 +25,16 @@ import ru.netology.nmedia.util.AndroidUtils
 
 class MainActivity : AppCompatActivity() {
 
+    private val newPostRequestCode = 1
+    private val viewModel: PostViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel:PostViewModel by viewModels()
+        //val viewModel:PostViewModel by viewModels()
 
         val adapter = PostAdapter (object : OnInteractionListener {
             override fun onEdit(post: Post) {
@@ -43,9 +48,17 @@ class MainActivity : AppCompatActivity() {
             override fun onRemove(post: Post) {
                 viewModel.remove(post.id)
             }
-
+            // неявный интент - отправка текста в сообщение чата
             override fun onShare(post: Post) {
                 viewModel.share(post.id)
+                val intent= Intent().apply{
+                    action= Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, post.content)
+                    type="text/plain"
+                }
+                val shareIntent= Intent.createChooser(intent, getString(R.string.chooser_share_post))
+                startActivity(shareIntent)
+
             }
         })
 
@@ -54,41 +67,64 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(posts)
         }
 
-        viewModel.edited.observe(this) { post ->
-            if (post.id == 0L) {
-                return@observe
-            }
-            with(binding.textPost) {   // копирование текста поста в editText
-                requestFocus()
-                setText(post.content)
-            }
+        binding.fab.setOnClickListener {
+            val intent = Intent(this@MainActivity, NewPost::class.java)
+            startActivityForResult(intent, newPostRequestCode)
+            //startActivity(intent)
         }
 
-        binding.savePost.setOnClickListener {
-            with(binding.textPost) {
-                if (text.isNullOrBlank()) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        context.getString(R.string.error_empty_content),
-                        Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
+
+
+//        viewModel.edited.observe(this) { post ->
+//            if (post.id == 0L) {
+//                return@observe
+//            }
+//            with(binding.textPost) {   // копирование текста поста в editText
+//                requestFocus()
+//                setText(post.content)
+//            }
+//        }
+
+//        binding.savePost.setOnClickListener {
+//            with(binding.textPost) {
+//                if (text.isNullOrBlank()) {
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        context.getString(R.string.error_empty_content),
+//                        Toast.LENGTH_SHORT).show()
+//                    return@setOnClickListener
+//                }
+//                viewModel.changeContent(text.toString())
+//                viewModel.savePost()
+//
+//                setText("")
+//                clearFocus()
+//                AndroidUtils.hideKeyboard(this)
+//            }
+//        }
+
+//        binding.cancelEdit.setOnClickListener {
+//            with(binding.textPost){
+//                setText("")
+//                clearFocus()
+//                AndroidUtils.hideKeyboard(this)
+//            }
+//        }
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            newPostRequestCode -> {
+                if (resultCode != Activity.RESULT_OK) {
+                    return
                 }
-                viewModel.changeContent(text.toString())
-                viewModel.savePost()
 
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
+                data?.getStringExtra(Intent.EXTRA_TEXT)?.let {
+                    viewModel.changeContent(it)
+                    viewModel.savePost()
+                }
             }
         }
-
-        binding.cancelEdit.setOnClickListener {
-            with(binding.textPost){
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
-            }
-        }
-
     }
 }

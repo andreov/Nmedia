@@ -13,55 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/card_post" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierTop"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="textPost,savePost" />
-
-    <EditText
-        android:id="@+id/textPost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/text_post"
-        android:inputType="textMultiLine"
-        android:background="@android:color/transparent"
-        android:padding="16dp"
-        android:textSize="16dp"
-        android:importantForAutofill="no"
-        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/savePost"/>
-
-    <ImageButton
-        android:id="@+id/savePost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_save_36"
-        app:layout_constraintEnd_toStartOf="@id/cancelEdit"
-        app:layout_constraintStart_toEndOf="@id/textPost"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="@string/description_save" />
-
-    <ImageButton
-        android:id="@+id/cancelEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_baseline_cancel_36"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="@string/description_save" />
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:contentDescription="@string/add_post" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

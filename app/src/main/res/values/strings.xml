@@ -11,5 +11,8 @@
     <string name="description_save">Save</string>
     <string name="error_empty_content">Content can\'t be empty</string>
     <string name="edit_post">Edit Post</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="description_post_save">post save</string>
+    <string name="add_post">add post</string>
 
 </resources>

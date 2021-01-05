@@ -12,5 +12,8 @@
     <string name="description_save">Сохранить</string>
     <string name="error_empty_content">Контент не может быть пустым</string>
     <string name="edit_post">Редактировать пост</string>
+    <string name="chooser_share_post">Поделится постом</string>
+    <string name="description_post_save">post save</string>
+    <string name="add_post">add post</string>
 
 </resources>
