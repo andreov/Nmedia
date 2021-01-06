@@ -26,6 +26,7 @@ import ru.netology.nmedia.util.AndroidUtils
 class MainActivity : AppCompatActivity() {
 
     private val newPostRequestCode = 1
+    //private val editPostRequestCode = 2
     private val viewModel: PostViewModel by viewModels()
 
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = PostAdapter (object : OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.editPost(post)
+                //val intent = Intent(this@MainActivity, NewPost::class.java)
             }
 
             override fun onLike(post: Post) {
@@ -69,47 +71,28 @@ class MainActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
             val intent = Intent(this@MainActivity, NewPost::class.java)
+            val bundle = Bundle()
+            bundle.putBoolean("key2", false)
+            intent.putExtras(bundle)
             startActivityForResult(intent, newPostRequestCode)
             //startActivity(intent)
         }
 
 
 
-//        viewModel.edited.observe(this) { post ->
-//            if (post.id == 0L) {
-//                return@observe
-//            }
-//            with(binding.textPost) {   // копирование текста поста в editText
-//                requestFocus()
-//                setText(post.content)
-//            }
-//        }
+        viewModel.edited.observe(this) { post ->
+            if (post.id == 0L) {
+                return@observe
+            }
+            val intent = Intent(this@MainActivity, NewPost::class.java)
+            val bundle = Bundle()
+            bundle.putString("key1", post.content)
+            bundle.putBoolean("key2", true)
+            intent.putExtras(bundle)
+            startActivityForResult(intent, newPostRequestCode)
+        }
 
-//        binding.savePost.setOnClickListener {
-//            with(binding.textPost) {
-//                if (text.isNullOrBlank()) {
-//                    Toast.makeText(
-//                        this@MainActivity,
-//                        context.getString(R.string.error_empty_content),
-//                        Toast.LENGTH_SHORT).show()
-//                    return@setOnClickListener
-//                }
-//                viewModel.changeContent(text.toString())
-//                viewModel.savePost()
-//
-//                setText("")
-//                clearFocus()
-//                AndroidUtils.hideKeyboard(this)
-//            }
-//        }
 
-//        binding.cancelEdit.setOnClickListener {
-//            with(binding.textPost){
-//                setText("")
-//                clearFocus()
-//                AndroidUtils.hideKeyboard(this)
-//            }
-//        }
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -125,6 +108,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.savePost()
                 }
             }
+
         }
     }
 }
