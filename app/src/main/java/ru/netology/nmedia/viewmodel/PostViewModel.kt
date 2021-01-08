@@ -13,7 +13,8 @@ private val empty = Post(   //data post для заполнения нового
     published = "",
     likedByMe = false,
     countShare = 0,
-    countLike = 0
+    countLike = 0,
+    urlVideo = ""
 )
 
 class PostViewModel : ViewModel() {
@@ -38,9 +39,19 @@ class PostViewModel : ViewModel() {
 
     fun changeContent(content: String) {   // изменение контента поста
         val text = content.trim()
+        //val urlText = urlVideo.trim()
         if (edited.value?.content == text) {
             return
         }
         edited.value = edited.value?.copy(content = text)
+    }
+
+    fun changeUrl(content: String) {   // изменение контента поста
+        val text = content.trim()
+        //val urlText = urlVideo.trim()
+        if (edited.value?.urlVideo == text) {
+            return
+        }
+        edited.value = edited.value?.copy(urlVideo = text)
     }
 }

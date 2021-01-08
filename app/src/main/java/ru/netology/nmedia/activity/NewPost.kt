@@ -20,10 +20,13 @@ class NewPost : AppCompatActivity() {
         val bundle = intent.extras
         var editContent:String? = null
         var isUpdatePost:Boolean=false
+        var editUrl: String = ""
         isUpdatePost= bundle!!.getBoolean("key2")
         if(isUpdatePost){
-            editContent = bundle!!.getString("key1", "Default")
+            editContent = bundle.getString("key1", "Default")
             binding.edit.setText(editContent)
+            editUrl = bundle.getString("key3", "")
+            binding.urlVideo.setText(editUrl)
         }
         else {
             binding.edit.setText("")
@@ -42,7 +45,9 @@ class NewPost : AppCompatActivity() {
 
             } else {
                 val content = binding.edit.text.toString()
+                val urlText = binding.urlVideo.text.toString()
                 intent.putExtra(Intent.EXTRA_TEXT, content)
+                intent.putExtra(Intent.EXTRA_HTML_TEXT, urlText)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

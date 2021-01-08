@@ -26,6 +26,7 @@ import ru.netology.nmedia.util.AndroidUtils
 class MainActivity : AppCompatActivity() {
 
     private val newPostRequestCode = 1
+
     //private val editPostRequestCode = 2
     private val viewModel: PostViewModel by viewModels()
 
@@ -87,6 +88,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, NewPost::class.java)
             val bundle = Bundle()
             bundle.putString("key1", post.content)
+            bundle.putString("key3", post.urlVideo)
             bundle.putBoolean("key2", true)
             intent.putExtras(bundle)
             startActivityForResult(intent, newPostRequestCode)
@@ -105,8 +107,14 @@ class MainActivity : AppCompatActivity() {
 
                 data?.getStringExtra(Intent.EXTRA_TEXT)?.let {
                     viewModel.changeContent(it)
-                    viewModel.savePost()
+                    //viewModel.savePost()
                 }
+
+                data?.getStringExtra(Intent.EXTRA_HTML_TEXT)?.let {
+                    viewModel.changeUrl(it)
+                    //viewModel.savePost()
+                }
+                viewModel.savePost()
             }
 
         }

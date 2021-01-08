@@ -9,11 +9,28 @@
     <EditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:hint="Create text post"
+        android:padding="16dp"
         android:background="@android:color/transparent"
         />
+
+
+    <EditText
+        android:id="@+id/urlVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_anchor="@id/edit"
+        app:layout_anchorGravity="bottom"
+        android:layout_marginVertical="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="48dp"
+        android:inputType="textMultiLine"
+        android:hint="Input URL video"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
