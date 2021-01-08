@@ -4,25 +4,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.MainActivity
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.ShortFormatCount
-import java.net.HttpCookie.parse
-import java.net.URI
-import java.security.AccessController.getContext
-import java.util.logging.Level.parse
+
 
 interface OnInteractionListener {
     fun onLike(post: Post) {}
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
+    fun onVideo(post: Post) {}
 }
 
 class PostAdapter(private val onInteractionListener: OnInteractionListener
@@ -55,9 +51,11 @@ class PostViewHolder(
             urlText.text = post.urlVideo
             imageLike.text = shortFormatCount.countFormat(post.countLike)
             imageShare.text = shortFormatCount.countFormat(post.countShare)
+
 //            imageLike.setImageResource(
 //                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
 //            )
+
             if(urlText.text == "") video.visibility = View.GONE
             else {
                 video.visibility = View.VISIBLE
@@ -71,6 +69,9 @@ class PostViewHolder(
             }
             imageShare.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+            video.setOnClickListener {
+                onInteractionListener.onVideo(post)
             }
             menu.setOnClickListener{
                 PopupMenu(it.context, it).apply {

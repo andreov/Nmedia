@@ -2,6 +2,7 @@ package ru.netology.nmedia.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 
                                      //def activity_version = "1.1.0"
@@ -26,8 +27,6 @@ import ru.netology.nmedia.util.AndroidUtils
 class MainActivity : AppCompatActivity() {
 
     private val newPostRequestCode = 1
-
-    //private val editPostRequestCode = 2
     private val viewModel: PostViewModel by viewModels()
 
 
@@ -36,12 +35,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val viewModel:PostViewModel by viewModels()
-
         val adapter = PostAdapter (object : OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.editPost(post)
-                //val intent = Intent(this@MainActivity, NewPost::class.java)
+
             }
 
             override fun onLike(post: Post) {
@@ -51,6 +48,16 @@ class MainActivity : AppCompatActivity() {
             override fun onRemove(post: Post) {
                 viewModel.remove(post.id)
             }
+
+            // неявный интент - отправка video в yutube
+            override fun onVideo(post: Post) {
+                val url:String=post.urlVideo
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                //val videoIntent = Intent.createChooser(intent, "Play Video")
+                startActivity(intent)
+
+            }
+
             // неявный интент - отправка текста в сообщение чата
             override fun onShare(post: Post) {
                 viewModel.share(post.id)

@@ -26,6 +26,7 @@ class PostViewModel : ViewModel() {
     fun share(id: Long) = repository.share(id)
     fun remove(id: Long) = repository.remove(id)
 
+
     fun savePost() {                 //сохранение поста
         edited.value?.let {
             repository.savePost(it)
@@ -39,7 +40,6 @@ class PostViewModel : ViewModel() {
 
     fun changeContent(content: String) {   // изменение контента поста
         val text = content.trim()
-        //val urlText = urlVideo.trim()
         if (edited.value?.content == text) {
             return
         }
@@ -48,7 +48,6 @@ class PostViewModel : ViewModel() {
 
     fun changeUrl(content: String) {   // изменение контента поста
         val text = content.trim()
-        //val urlText = urlVideo.trim()
         if (edited.value?.urlVideo == text) {
             return
         }
