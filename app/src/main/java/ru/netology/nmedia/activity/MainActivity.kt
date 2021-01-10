@@ -8,21 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
                                      //def activity_version = "1.1.0"
 import androidx.activity.viewModels //implementation "androidx.activity:activity-ktx:$activity_version"
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.observe
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractionListener
 //import ru.netology.nmedia.adapter.OnLikeListener
 //import ru.netology.nmedia.adapter.OnShareListener
 //import kotlinx.android.synthetic.main.activity_main.*  // установка в Gradle
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.dto.ShortFormatCount
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.util.AndroidUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             override fun onVideo(post: Post) {
                 val url:String=post.urlVideo
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                //val videoIntent = Intent.createChooser(intent, "Play Video")
                 startActivity(intent)
 
             }
@@ -78,12 +72,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, NewPost::class.java)
-            val bundle = Bundle()
-            bundle.putBoolean("key2", false)
-            intent.putExtras(bundle)
+            val intent = Intent(this@MainActivity, NewPostActivity::class.java)
             startActivityForResult(intent, newPostRequestCode)
-            //startActivity(intent)
+
         }
 
 
@@ -92,11 +83,11 @@ class MainActivity : AppCompatActivity() {
             if (post.id == 0L) {
                 return@observe
             }
-            val intent = Intent(this@MainActivity, NewPost::class.java)
+            val intent = Intent(this@MainActivity, NewPostActivity::class.java)
             val bundle = Bundle()
-            bundle.putString("key1", post.content)
-            bundle.putString("key3", post.urlVideo)
-            bundle.putBoolean("key2", true)
+            bundle.putString(NewPostActivity.EDIT_CONTENT_KEY, post.content)
+            bundle.putString(NewPostActivity.EDIT_URL_KEY, post.urlVideo)
+            bundle.putBoolean(NewPostActivity.IS_UPDATE_POST_KEY, true)
             intent.putExtras(bundle)
             startActivityForResult(intent, newPostRequestCode)
         }

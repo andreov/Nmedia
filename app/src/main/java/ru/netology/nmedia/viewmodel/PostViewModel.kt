@@ -46,7 +46,7 @@ class PostViewModel : ViewModel() {
         edited.value = edited.value?.copy(content = text)
     }
 
-    fun changeUrl(content: String) {   // изменение контента поста
+    fun changeUrl(content: String) {   // изменение url video
         val text = content.trim()
         if (edited.value?.urlVideo == text) {
             return

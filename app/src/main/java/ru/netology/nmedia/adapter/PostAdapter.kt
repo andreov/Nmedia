@@ -34,8 +34,6 @@ class PostAdapter(private val onInteractionListener: OnInteractionListener
         val post = getItem(position)
         holder.bind(post)
     }
-
-    //override fun getItemCount(): Int = list.size
 }
 
 class PostViewHolder(
@@ -52,17 +50,13 @@ class PostViewHolder(
             imageLike.text = shortFormatCount.countFormat(post.countLike)
             imageShare.text = shortFormatCount.countFormat(post.countShare)
 
-//            imageLike.setImageResource(
-//                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-//            )
-
             if(urlText.text == "") video.visibility = View.GONE
             else {
                 video.visibility = View.VISIBLE
                 video.setImageResource(R.mipmap.ic_banner_foreground)
             }
 
-            imageLike.isChecked = post.likedByMe   // materialDisign
+            imageLike.isChecked = post.likedByMe
 
             imageLike.setOnClickListener{
                 onInteractionListener.onLike(post)

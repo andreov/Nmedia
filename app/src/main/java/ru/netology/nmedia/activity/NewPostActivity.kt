@@ -9,23 +9,24 @@ import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityNewPostBinding
 
-class NewPost : AppCompatActivity() {
+class NewPostActivity : AppCompatActivity() {
+
+    companion object {
+        const val EDIT_CONTENT_KEY = "key1"
+        const val IS_UPDATE_POST_KEY = "key2"
+        const val EDIT_URL_KEY = "key3"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //binding.edit.requestFocus()
-
-        val bundle = intent.extras
-        var editContent:String? = null
-        var isUpdatePost:Boolean=false
-        var editUrl: String = ""
-        isUpdatePost= bundle!!.getBoolean("key2", false)
+        val isUpdatePost= intent?.getBooleanExtra(IS_UPDATE_POST_KEY, false) == true
         if(isUpdatePost){
-            editContent = bundle!!.getString("key1", "Default")
+            val editContent = intent?.getStringExtra(EDIT_CONTENT_KEY)
             binding.edit.setText(editContent)
-            editUrl = bundle!!.getString("key3", "")
+            val editUrl = intent?.getStringExtra(EDIT_URL_KEY)
             binding.urlVideo.setText(editUrl)
         }
         else {
@@ -51,7 +52,6 @@ class NewPost : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }
-            //finish()
         }
     }
 }

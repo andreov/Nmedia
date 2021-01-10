@@ -6,7 +6,7 @@ data class Post(
     val content: String,
     val published: String,
     val likedByMe: Boolean,
-    var countLike: Long,
-    var countShare: Long,
-    var urlVideo: String = ""
+    val countLike: Long,
+    val countShare: Long,
+    val urlVideo: String = ""
 )
