@@ -21,11 +21,11 @@ class NewPost : AppCompatActivity() {
         var editContent:String? = null
         var isUpdatePost:Boolean=false
         var editUrl: String = ""
-        isUpdatePost= bundle!!.getBoolean("key2")
+        isUpdatePost= bundle!!.getBoolean("key2", false)
         if(isUpdatePost){
-            editContent = bundle.getString("key1", "Default")
+            editContent = bundle!!.getString("key1", "Default")
             binding.edit.setText(editContent)
-            editUrl = bundle.getString("key3", "")
+            editUrl = bundle!!.getString("key3", "")
             binding.urlVideo.setText(editUrl)
         }
         else {
