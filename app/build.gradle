@@ -46,6 +46,7 @@ dependencies {
     def activity_version = "1.1.0"
     def recyclerview_version = "1.1.0"
     def mdc_version = "1.2.1"
+    def gson_version = "2.8.6"
 
     //Recyclerview
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
@@ -73,6 +74,8 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$arch_version"
 
     implementation "com.google.android.material:material:$mdc_version"
+
+    implementation "com.google.code.gson:gson:$gson_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'

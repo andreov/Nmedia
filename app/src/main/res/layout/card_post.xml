@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp" >
+    android:padding="16dp">
 
 
     <ImageView
@@ -13,11 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/avatar_netology"
+        app:layout_constraintBottom_toBottomOf="@id/barrierTop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/barrierTop"
-        app:srcCompat="@drawable/netology_48"
-        android:contentDescription="@string/avatar_netology" />
+        app:srcCompat="@drawable/netology_48" />
 
     <TextView
         android:id="@+id/author"
@@ -38,34 +37,34 @@
         android:id="@+id/published"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/publishedText"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/barrierTop"
         app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toBottomOf="@id/author"
 
-        android:text="@string/publishedText" />
+        app:layout_constraintTop_toBottomOf="@id/author" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Widget.AppTheme.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:iconPadding="0dp"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:icon="@drawable/ic_baseline_more_vert_24"
         android:contentDescription="@string/menu_post"
-        style="@style/Widget.AppTheme.Text"/>
+        app:icon="@drawable/ic_baseline_more_vert_24"
+        app:iconGravity="end"
+        app:iconPadding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:layout_constraintTop_toBottomOf="@id/avatar"
-        app:constraint_referenced_ids="avatar,published,menu" />
+        app:constraint_referenced_ids="avatar,published,menu"
+        app:layout_constraintTop_toBottomOf="@id/avatar" />
 
     <TextView
         android:id="@+id/content"
@@ -83,26 +82,25 @@
         android:id="@+id/video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/videopost"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        android:contentDescription="@string/videopost" />
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
         android:id="@+id/urlText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="url video"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@id/barrierBottom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/video"
-        android:hint="url video" />
-
+        app:layout_constraintTop_toBottomOf="@id/video" />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -117,42 +115,42 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageLike"
-        app:iconTint="@color/like_check"
+        style="@style/Widget.AppTheme.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="10"
         android:checkable="true"
+        android:text="10"
         app:icon="@drawable/ic_like_24dp"
+        app:iconTint="@color/like_check"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        style="@style/Widget.AppTheme.Text" />
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageShare"
+        style="@style/Widget.AppTheme.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
         android:checkable="true"
         android:text="5"
-        app:layout_constraintStart_toEndOf="@id/imageLike"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
         app:icon="@drawable/ic_baseline_share_24"
-        style="@style/Widget.AppTheme.Text" />
+        app:layout_constraintStart_toEndOf="@id/imageLike"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/imageViews"
+        style="@style/Widget.AppTheme.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="5"
-        app:layout_constraintTop_toBottomOf="@id/barrierBottom"
-        app:layout_constraintEnd_toEndOf="parent"
         app:icon="@drawable/ic_baseline_visibility_24"
-        style="@style/Widget.AppTheme.Text" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierBottom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

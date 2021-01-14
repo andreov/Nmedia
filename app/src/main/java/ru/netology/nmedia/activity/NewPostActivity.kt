@@ -22,7 +22,7 @@ class NewPostActivity : AppCompatActivity() {
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val isUpdatePost= intent?.getBooleanExtra(IS_UPDATE_POST_KEY, false) == true
+        val isUpdatePost = intent?.getBooleanExtra(IS_UPDATE_POST_KEY, false) == true
         if(isUpdatePost){
             val editContent = intent?.getStringExtra(EDIT_CONTENT_KEY)
             binding.edit.setText(editContent)
