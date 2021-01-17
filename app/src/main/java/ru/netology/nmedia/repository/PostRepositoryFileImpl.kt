@@ -28,10 +28,12 @@ class PostRepositoryFileImpl(private val context: Context) : PostRepository {
                 data.value = posts
             }
         } else {
+
             // если нет, записываем пустой массив
             sync()
         }
     }
+
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun savePost(post: Post) {
