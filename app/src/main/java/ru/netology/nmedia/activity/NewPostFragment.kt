@@ -19,11 +19,15 @@ import ru.netology.nmedia.viewmodel.PostViewModel
 
 class NewPostFragment : Fragment() {
 
-    companion object {
-        const val EDIT_CONTENT_KEY = "key1"
-        const val IS_UPDATE_POST_KEY = "key2"
-        const val EDIT_URL_KEY = "key3"
-    }
+//    companion object {
+//
+//       const val EDIT_CONTENT_KEY = "key1"
+//        const val IS_UPDATE_POST_KEY = "key2"
+//        const val EDIT_URL_KEY = "key3"
+//        var bandle = Bundle()//.arguments: String?
+////              set(value) = putString(EDIT_CONTENT_KEY, value)
+////              get() = getString(EDIT_CONTENT_KEY)
+//    }
 
     private val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
@@ -34,25 +38,42 @@ class NewPostFragment : Fragment() {
     ): View? {
         val binding = FragmentNewPostBinding.inflate(inflater, container, false)
 
-//        val isUpdatePost = intent?.getBooleanExtra(IS_UPDATE_POST_KEY, false) == true
-//
-//        if(isUpdatePost){
-//            val editContent = intent?.getStringExtra(EDIT_CONTENT_KEY)
-//            binding.edit.setText(editContent)
-//            val editUrl = intent?.getStringExtra(EDIT_URL_KEY)
-//            binding.urlVideo.setText(editUrl)
-//        }
-//        else {
-//            binding.edit.setText("")
-//            binding.edit.requestFocus()
-//        }
+        val isUpdatePost = arguments?.getBoolean(FeedFragment.IS_UPDATE_POST_KEY, false) == true
+
+        if(isUpdatePost){
+            val editContent = arguments?.getString(FeedFragment.EDIT_CONTENT_KEY)
+            binding.edit.setText(editContent)
+            val editUrl = arguments?.getString(FeedFragment.EDIT_URL_KEY)
+            binding.urlVideo.setText(editUrl)
+
+        }
+        else {
+            binding.edit.setText("")
+            binding.edit.requestFocus()
+        }
+
+        //val editContent = arguments?.getString(FeedFragment.EDIT_CONTENT_KEY)
+        //binding.edit.setText(editContent)
+        //val editUrl = arguments?.getString(FeedFragment.EDIT_URL_KEY)
+        //binding.urlVideo.setText(editUrl)
+
 
         binding.ok.setOnClickListener {
             if (!binding.edit.text.isNullOrBlank()){
                 viewModel.changeContent(binding.edit.text.toString())
+                viewModel.changeUrl(binding.urlVideo.text.toString())
                 viewModel.savePost()
+                Bundle().clear()
+                findNavController().navigateUp()
+            } else {
+                Snackbar.make(binding.root, R.string.error_empty_content, LENGTH_INDEFINITE)
+                    .setAction(android.R.string.ok) {
+                        findNavController().navigateUp()
+                    }
+                    .show()
+
+
             }
-            findNavController().navigateUp()
 
             AndroidUtils.hideKeyboard(requireView())
 //            if (binding.edit.text.isNullOrBlank()) {
