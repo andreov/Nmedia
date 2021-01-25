@@ -15,5 +15,7 @@
     <string name="description_post_save">post save</string>
     <string name="add_post">add post</string>
     <string name="videopost">videoPost</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -67,6 +67,25 @@ class PostViewHolder(
             video.setOnClickListener {
                 onInteractionListener.onVideo(post)
             }
+           cardView.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+            content.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+            avatar.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+            published.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+            urlText.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+            author.setOnClickListener() {
+                onInteractionListener.onEdit(post)
+            }
+
             menu.setOnClickListener{
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)           // пункты меню
