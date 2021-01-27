@@ -21,7 +21,8 @@ interface OnInteractionListener {
     fun onVideo(post: Post) {}
 }
 
-class PostAdapter(private val onInteractionListener: OnInteractionListener
+class PostAdapter(
+    private val onInteractionListener: OnInteractionListener
 ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
 
 
@@ -39,7 +40,7 @@ class PostAdapter(private val onInteractionListener: OnInteractionListener
 class PostViewHolder(
     private val binding: CardPostBinding,
     private val onInteractionListener: OnInteractionListener,
-    private val shortFormatCount:ShortFormatCount = ShortFormatCount()
+    private val shortFormatCount: ShortFormatCount = ShortFormatCount()
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
@@ -50,7 +51,7 @@ class PostViewHolder(
             imageLike.text = shortFormatCount.countFormat(post.countLike)
             imageShare.text = shortFormatCount.countFormat(post.countShare)
 
-            if(urlText.text == "") video.visibility = View.GONE
+            if (urlText.text == "") video.visibility = View.GONE
             else {
                 video.visibility = View.VISIBLE
                 video.setImageResource(R.mipmap.ic_banner_foreground)
@@ -58,7 +59,7 @@ class PostViewHolder(
 
             imageLike.isChecked = post.likedByMe
 
-            imageLike.setOnClickListener{
+            imageLike.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
             imageShare.setOnClickListener {
@@ -67,7 +68,7 @@ class PostViewHolder(
             video.setOnClickListener {
                 onInteractionListener.onVideo(post)
             }
-           cardView.setOnClickListener() {
+            cardView.setOnClickListener() {
                 onInteractionListener.onEdit(post)
             }
             content.setOnClickListener() {
@@ -86,11 +87,11 @@ class PostViewHolder(
                 onInteractionListener.onEdit(post)
             }
 
-            menu.setOnClickListener{
+            menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)           // пункты меню
                     setOnMenuItemClickListener { item ->  // обработчик клика пункта меню
-                        when(item.itemId) {
+                        when (item.itemId) {
                             R.id.remove -> {
                                 onInteractionListener.onRemove(post)
                                 true

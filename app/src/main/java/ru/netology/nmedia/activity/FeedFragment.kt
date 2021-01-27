@@ -15,21 +15,14 @@ import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.databinding.FragmentFeedBinding
-import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.dto.Post as Post
 
 class FeedFragment : Fragment() {
 
     companion object {
-
-        const val EDIT_CONTENT_KEY = "key1"
-        const val IS_UPDATE_POST_KEY = "key2"
-        const val EDIT_URL_KEY = "key3"
-        const val EDIT_ID_POST = "key4"
-        //var bandle = Bundle()//.arguments: String?
-//              set(value) = putString(EDIT_CONTENT_KEY, value)
-//              get() = getString(EDIT_CONTENT_KEY)
+        const val KEY_PARSE_DATA = "key1"
+        val bundle = Bundle()
     }
-
 
 
     private val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
@@ -40,9 +33,9 @@ class FeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentFeedBinding.inflate(inflater, container,false)
+        val binding = FragmentFeedBinding.inflate(inflater, container, false)
 
-        val adapter = PostAdapter (object : OnInteractionListener {
+        val adapter = PostAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.editPost(post)
 
@@ -58,7 +51,7 @@ class FeedFragment : Fragment() {
 
             // неявный интент - отправка video в yutube
             override fun onVideo(post: Post) {
-                val url:String=post.urlVideo
+                val url: String = post.urlVideo
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(intent)
 
@@ -67,12 +60,13 @@ class FeedFragment : Fragment() {
             // неявный интент - отправка текста в сообщение чата
             override fun onShare(post: Post) {
                 viewModel.share(post.id)
-                val intent= Intent().apply{
-                    action= Intent.ACTION_SEND
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_TEXT, post.content)
-                    type="text/plain"
+                    type = "text/plain"
                 }
-                val shareIntent= Intent.createChooser(intent, getString(R.string.chooser_share_post))
+                val shareIntent =
+                    Intent.createChooser(intent, getString(R.string.chooser_share_post))
                 startActivity(shareIntent)
 
             }
@@ -86,25 +80,18 @@ class FeedFragment : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_feedFragment_to_newPostFragment4)
 
+
         }
-
-
 
         viewModel.edited.observe(viewLifecycleOwner) { post ->
             if (post.id == 0L) {
                 return@observe
             }
-
-            val bundle = Bundle()
-            bundle.putString(EDIT_CONTENT_KEY, post.content)
-            bundle.putString(EDIT_URL_KEY, post.urlVideo)
-            bundle.putLong(EDIT_ID_POST, post.id)
-            bundle.putBoolean(IS_UPDATE_POST_KEY, true)
-           //findNavController().navigate(R.id.action_feedFragment_to_newPostFragment4, bundle)
-           findNavController().navigate(R.id.action_feedFragment_to_editFragment, bundle)
+            bundle.putParcelable(KEY_PARSE_DATA, post)
+            findNavController().navigate(R.id.action_feedFragment_to_editFragment2, bundle)
+            //findNavController().navigate(R.id.action_feedFragment_to_newPostFragment4, bundle)
 
         }
-
         return binding.root
     }
 

@@ -37,6 +37,10 @@ class PostViewModel (application: Application) : AndroidViewModel(application) {
         edited.value = empty
     }
 
+    fun changeId() {
+        edited.value = empty
+    }
+
     fun editPost(post: Post) {
         edited.value = post
     }

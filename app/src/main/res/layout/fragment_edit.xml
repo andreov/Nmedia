@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@id/editAuthor" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/editMenu"
+            android:id="@+id/menu"
             style="@style/Widget.AppTheme.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="editAvatar,editPublished,editMenu"
+            app:constraint_referenced_ids="editAvatar,editPublished,menu"
             app:layout_constraintTop_toBottomOf="@id/editAvatar" />
 
         <TextView
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="barrierTop,editAvatar,editPublished,editMenu,editContent,editVideo, editUrlText"
+            app:constraint_referenced_ids="barrierTop,editAvatar,editPublished,menu,editContent,editVideo, editUrlText"
             app:layout_constraintTop_toBottomOf="@id/editContent"
             tools:layout_editor_absoluteY="236dp" />
 
