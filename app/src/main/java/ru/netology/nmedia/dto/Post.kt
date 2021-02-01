@@ -10,7 +10,7 @@ data class Post(
     val content: String,
     val published: String,
     val likedByMe: Boolean,
-    val countLike: Long,
-    val countShare: Long,
+    val countLike: Long = 0,
+    val countShare: Long = 0,
     val urlVideo: String = ""
 ):Parcelable

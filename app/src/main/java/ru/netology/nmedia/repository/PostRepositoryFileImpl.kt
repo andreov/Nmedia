@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import ru.netology.nmedia.R
 import ru.netology.nmedia.dto.Post
 
 class PostRepositoryFileImpl(private val context: Context) : PostRepository {
@@ -41,9 +42,9 @@ class PostRepositoryFileImpl(private val context: Context) : PostRepository {
             posts = listOf(
                 post.copy(
                     id = nextId++,
-                    author = "AndreOv",
+                    author = context.getString(R.string.authorPost),
                     likedByMe = false,
-                    published = "12 december 10:12"
+                    published = context.getString(R.string.publishedPost)
                 )
             ) + posts
             data.value = posts

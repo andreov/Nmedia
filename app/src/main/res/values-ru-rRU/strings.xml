@@ -16,5 +16,7 @@
     <string name="description_post_save">post save</string>
     <string name="add_post">add post</string>
     <string name="videopost">videoPost</string>
+    <string name="authorPost">AndreOv</string>
+    <string name="publishedPost">1 февраля 10:12</string>
 
 </resources>
