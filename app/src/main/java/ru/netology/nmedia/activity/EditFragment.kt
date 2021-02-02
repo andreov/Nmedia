@@ -28,6 +28,8 @@ class EditFragment : Fragment() {
 
         val bundlePost = arguments?.getParcelable<Post>(KEY_PARSE_DATA)
         binding.editContent.text = bundlePost?.content
+        binding.editAuthor.text = bundlePost?.author
+        binding.editPublished.text = bundlePost?.published
         binding.editUrlText.text = bundlePost?.urlVideo
         viewModel.changeId()
 

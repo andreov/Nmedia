@@ -23,7 +23,9 @@
         tools:layout="@layout/fragment_new_post" >
         <action
             android:id="@+id/action_newPostFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
+            app:destination="@id/feedFragment"
+            app:popUpTo="@+id/feedFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/editFragment"

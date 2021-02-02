@@ -2,6 +2,7 @@ package ru.netology.nmedia.dto
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import ru.netology.nmedia.R
 
 @Parcelize
 data class Post(
